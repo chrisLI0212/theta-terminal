@@ -1,0 +1,22 @@
+# Operating System
+.DS_Store
+*.exe
+*.dll
+
+# Java
+*.class
+*.jar
+*.log
+target/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+theta.log
+nohup.out
+/app
+ThetaTerminal.jar
