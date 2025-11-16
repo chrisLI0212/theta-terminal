@@ -1,0 +1,4 @@
+# Ignore local artifacts and secrets
+creds.txt
+*.log
+/tmp/
