@@ -14,7 +14,7 @@ EOF
 chmod 600 /app/creds.txt
 
 # Start Theta Terminal with creds-file and config
-exec java -jar /app/ThetaTerminal.jar \
+exec java -jar /app/ThetaTerminalv3.jar \
   --creds-file=/app/creds.txt \
   --config=/app/config_1.properties
 
