@@ -1,30 +1,20 @@
-#!/bin/bash
+#!/bin/sh
+set -e
 
-set -euo pipefail
-
-
-
-# HARD-CODED CREDENTIALS (your real username/password go here)
-
+# Hard‑coded credentials (only safe in a private image)
 THETA_EMAIL="chrisicey0212@gmail.com"
-
 THETA_PASSWORD="Aa02120119"
 
-
-
-cat <<EOF >/app/creds.txt
-
+# Write credentials file exactly as required by the docs
+cat >/app/creds.txt <<EOF
 ${THETA_EMAIL}
-
 ${THETA_PASSWORD}
-
 EOF
-
-
 
 chmod 600 /app/creds.txt
 
-
-
-exec "$@"
+# Start Theta Terminal with creds-file and config
+exec java -jar /app/ThetaTerminal.jar \
+  --creds-file=/app/creds.txt \
+  --config=/app/config_1.properties
 
