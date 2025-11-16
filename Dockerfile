@@ -11,22 +11,19 @@ RUN apt-get update && \
         ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy config and entrypoint into image
-COPY config.toml .
-COPY entrypoint.sh .
-
-# Ensure entrypoint is executable
-RUN chmod +x /app/entrypoint.sh
-
 # Download Theta Terminal v3 JAR into /app
 ENV THETA_JAR_URL="https://download-unstable.thetadata.us/ThetaTerminalv3.jar"
 RUN curl -fSL "$THETA_JAR_URL" -o /app/ThetaTerminalv3.jar
 
+# Create credentials file with your login info
+RUN echo "chrisicey0212@gmail.com" > /app/creds.txt && \
+    echo "Aa02120119" >> /app/creds.txt
+
+# Copy config if you have one (optional - rename to match what Terminal expects)
+# COPY config.toml /app/config.toml
+
 # Ports used by Theta Terminal
 EXPOSE 25503 25520
 
-# entrypoint.sh will create creds.txt (from hard-coded values) and then run Java
-ENTRYPOINT ["/app/entrypoint.sh"]
-
-# Fixed: Use correct JAR name and proper CMD array syntax
-CMD ["java", "-jar", "/app/ThetaTerminalv3.jar", "chrisicey0212@gmail.com", "Aa02120119"]
+# Start ThetaTerminal with credentials file - no config file since it doesn't exist
+CMD ["java", "-jar", "/app/ThetaTerminalv3.jar", "--creds-file=/app/creds.txt"]
