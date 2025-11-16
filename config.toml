@@ -1,0 +1,20 @@
+# Configuration properties for Theta Terminal 3
+
+host = "0.0.0.0"
+port = 25503
+log_directory = "/tmp"
+
+[mdds_server]
+host = "mdds-01.thetadata.us"
+port = 443
+tls = true
+
+[fpss]
+enable=true
+reconnect_wait=1000
+fpss_queue_depth=1000000
+ws_port=25520
+fpss_region="fpss_nj_hosts"
+fpss_nj_hosts="nj-a.thetadata.us:20000,nj-a.thetadata.us:20001,nj-b.thetadata.us:20000,nj-b.thetadata.us:20001"
+fpss_stage_hosts="nj-a.thetadata.us:20100,test-server.thetadata.us:20100,test-server.thetadata.us:20101"
+fpss_dev_hosts="nj-a.thetadata.us:20200,test-server.thetadata.us:20200,test-server.thetadata.us:20201"
