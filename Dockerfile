@@ -10,7 +10,6 @@ COPY config.toml .
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
-# Download Theta Terminal v3
 ENV THETA_JAR_URL="https://download-unstable.thetadata.us/ThetaTerminalv3.jar"
 RUN curl -fSL "$THETA_JAR_URL" -o theta-terminal.jar
 
